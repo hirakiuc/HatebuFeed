@@ -7,9 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E76398F11B5A03CF0077F305 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7967E3D1B59AAA1007A5A59 /* Alamofire.framework */; };
+		E76398F21B5A03CF0077F305 /* Ono.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CDBE501B59F4FA00C10774 /* Ono.framework */; };
+		E76398F31B5A03DA0077F305 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CDBE541B59F5C500C10774 /* libxml2.tbd */; };
+		E76398F51B5A08C50077F305 /* Ono.framework in Resources */ = {isa = PBXBuildFile; fileRef = E7CDBE501B59F4FA00C10774 /* Ono.framework */; };
+		E76398F61B5A08C50077F305 /* Alamofire.framework in Resources */ = {isa = PBXBuildFile; fileRef = E7967E3D1B59AAA1007A5A59 /* Alamofire.framework */; };
+		E76398F81B5A3F1E0077F305 /* SwiftTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E76398F71B5A3F1E0077F305 /* SwiftTask.framework */; };
+		E76398F91B5A3F310077F305 /* SwiftTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E76398F71B5A3F1E0077F305 /* SwiftTask.framework */; };
+		E76398FB1B5A46CD0077F305 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E76398FA1B5A46CD0077F305 /* Realm.framework */; };
+		E76398FC1B5A46D50077F305 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E76398FA1B5A46CD0077F305 /* Realm.framework */; };
+		E76398FE1B5B434D0077F305 /* HotFeedRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76398FD1B5B434D0077F305 /* HotFeedRequestTests.swift */; };
+		E76399001B5B43D40077F305 /* NewFeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76398FF1B5B43D40077F305 /* NewFeedRequest.swift */; };
+		E76399041B5B46460077F305 /* BaseFeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399031B5B46460077F305 /* BaseFeedRequest.swift */; };
+		E76399061B5B59D40077F305 /* NewFeedRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399051B5B59D40077F305 /* NewFeedRequestTests.swift */; };
+		E76399081B5B642F0077F305 /* TagFeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399071B5B642F0077F305 /* TagFeedRequest.swift */; };
+		E763990E1B5B6FAA0077F305 /* HatebuCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763990D1B5B6FAA0077F305 /* HatebuCategory.swift */; };
+		E76399101B5B8D3E0077F305 /* TagFeedRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763990F1B5B8D3E0077F305 /* TagFeedRequestTests.swift */; };
 		E7967E1F1B599F31007A5A59 /* HatebuFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = E7967E1E1B599F31007A5A59 /* HatebuFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7967E261B599F31007A5A59 /* HatebuFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7967E1B1B599F31007A5A59 /* HatebuFeed.framework */; };
 		E7967E2B1B599F31007A5A59 /* HatebuFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7967E2A1B599F31007A5A59 /* HatebuFeedTests.swift */; };
+		E7967E361B59A130007A5A59 /* HatebuFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7967E351B59A130007A5A59 /* HatebuFeed.swift */; };
+		E7967E381B59A279007A5A59 /* HatebuFeed.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E7967E1E1B599F31007A5A59 /* HatebuFeed.h */; };
+		E7967E3A1B59A32B007A5A59 /* HotFeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7967E391B59A32B007A5A59 /* HotFeedRequest.swift */; };
+		E7967E3C1B59A8FD007A5A59 /* HatebuFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7967E3B1B59A8FD007A5A59 /* HatebuFeedItem.swift */; };
+		E7967E3F1B59AAAE007A5A59 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7967E3D1B59AAA1007A5A59 /* Alamofire.framework */; };
+		E7CDBE511B59F4FA00C10774 /* Ono.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CDBE501B59F4FA00C10774 /* Ono.framework */; };
+		E7CDBE561B5A039000C10774 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CDBE541B59F5C500C10774 /* libxml2.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,13 +45,41 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E7967E371B59A24D007A5A59 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				E7967E381B59A279007A5A59 /* HatebuFeed.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		E76398F71B5A3F1E0077F305 /* SwiftTask.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftTask.framework; path = Carthage/Build/iOS/SwiftTask.framework; sourceTree = "<group>"; };
+		E76398FA1B5A46CD0077F305 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		E76398FD1B5B434D0077F305 /* HotFeedRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotFeedRequestTests.swift; sourceTree = "<group>"; };
+		E76398FF1B5B43D40077F305 /* NewFeedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeedRequest.swift; sourceTree = "<group>"; };
+		E76399031B5B46460077F305 /* BaseFeedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFeedRequest.swift; sourceTree = "<group>"; };
+		E76399051B5B59D40077F305 /* NewFeedRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeedRequestTests.swift; sourceTree = "<group>"; };
+		E76399071B5B642F0077F305 /* TagFeedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFeedRequest.swift; sourceTree = "<group>"; };
+		E763990D1B5B6FAA0077F305 /* HatebuCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuCategory.swift; sourceTree = "<group>"; };
+		E763990F1B5B8D3E0077F305 /* TagFeedRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFeedRequestTests.swift; sourceTree = "<group>"; };
 		E7967E1B1B599F31007A5A59 /* HatebuFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HatebuFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7967E1E1B599F31007A5A59 /* HatebuFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HatebuFeed.h; sourceTree = "<group>"; };
 		E7967E201B599F31007A5A59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7967E251B599F31007A5A59 /* HatebuFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HatebuFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7967E2A1B599F31007A5A59 /* HatebuFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatebuFeedTests.swift; sourceTree = "<group>"; };
 		E7967E2C1B599F31007A5A59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7967E351B59A130007A5A59 /* HatebuFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuFeed.swift; sourceTree = "<group>"; };
+		E7967E391B59A32B007A5A59 /* HotFeedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotFeedRequest.swift; sourceTree = "<group>"; };
+		E7967E3B1B59A8FD007A5A59 /* HatebuFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuFeedItem.swift; sourceTree = "<group>"; };
+		E7967E3D1B59AAA1007A5A59 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		E7CDBE501B59F4FA00C10774 /* Ono.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ono.framework; path = Carthage/Build/iOS/Ono.framework; sourceTree = "<group>"; };
+		E7CDBE541B59F5C500C10774 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +87,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7967E3F1B59AAAE007A5A59 /* Alamofire.framework in Frameworks */,
+				E7CDBE511B59F4FA00C10774 /* Ono.framework in Frameworks */,
+				E76398F81B5A3F1E0077F305 /* SwiftTask.framework in Frameworks */,
+				E76398FB1B5A46CD0077F305 /* Realm.framework in Frameworks */,
+				E7CDBE561B5A039000C10774 /* libxml2.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,15 +100,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7967E261B599F31007A5A59 /* HatebuFeed.framework in Frameworks */,
+				E76398F11B5A03CF0077F305 /* Alamofire.framework in Frameworks */,
+				E76398F21B5A03CF0077F305 /* Ono.framework in Frameworks */,
+				E76398F91B5A3F310077F305 /* SwiftTask.framework in Frameworks */,
+				E76398FC1B5A46D50077F305 /* Realm.framework in Frameworks */,
+				E76398F31B5A03DA0077F305 /* libxml2.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E763990B1B5B6ED40077F305 /* requests */ = {
+			isa = PBXGroup;
+			children = (
+				E7967E391B59A32B007A5A59 /* HotFeedRequest.swift */,
+				E76398FF1B5B43D40077F305 /* NewFeedRequest.swift */,
+				E76399071B5B642F0077F305 /* TagFeedRequest.swift */,
+				E76399031B5B46460077F305 /* BaseFeedRequest.swift */,
+			);
+			name = requests;
+			sourceTree = "<group>";
+		};
+		E763990C1B5B6EEA0077F305 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				E7967E3B1B59A8FD007A5A59 /* HatebuFeedItem.swift */,
+				E763990D1B5B6FAA0077F305 /* HatebuCategory.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		E7967E111B599F31007A5A59 = {
 			isa = PBXGroup;
 			children = (
+				E76398FA1B5A46CD0077F305 /* Realm.framework */,
+				E76398F71B5A3F1E0077F305 /* SwiftTask.framework */,
+				E7CDBE541B59F5C500C10774 /* libxml2.tbd */,
+				E7CDBE501B59F4FA00C10774 /* Ono.framework */,
+				E7967E3D1B59AAA1007A5A59 /* Alamofire.framework */,
 				E7967E1D1B599F31007A5A59 /* HatebuFeed */,
 				E7967E291B599F31007A5A59 /* HatebuFeedTests */,
 				E7967E1C1B599F31007A5A59 /* Products */,
@@ -72,6 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				E7967E1E1B599F31007A5A59 /* HatebuFeed.h */,
+				E7967E351B59A130007A5A59 /* HatebuFeed.swift */,
+				E763990B1B5B6ED40077F305 /* requests */,
+				E763990C1B5B6EEA0077F305 /* model */,
 				E7967E201B599F31007A5A59 /* Info.plist */,
 			);
 			path = HatebuFeed;
@@ -81,6 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				E7967E2A1B599F31007A5A59 /* HatebuFeedTests.swift */,
+				E76398FD1B5B434D0077F305 /* HotFeedRequestTests.swift */,
+				E76399051B5B59D40077F305 /* NewFeedRequestTests.swift */,
+				E763990F1B5B8D3E0077F305 /* TagFeedRequestTests.swift */,
 				E7967E2C1B599F31007A5A59 /* Info.plist */,
 			);
 			path = HatebuFeedTests;
@@ -108,6 +200,7 @@
 				E7967E171B599F31007A5A59 /* Frameworks */,
 				E7967E181B599F31007A5A59 /* Headers */,
 				E7967E191B599F31007A5A59 /* Resources */,
+				E7967E401B59AB3B007A5A59 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -125,6 +218,8 @@
 				E7967E211B599F31007A5A59 /* Sources */,
 				E7967E221B599F31007A5A59 /* Frameworks */,
 				E7967E231B599F31007A5A59 /* Resources */,
+				E7967E371B59A24D007A5A59 /* CopyFiles */,
+				E7CDBE531B59F58700C10774 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -142,6 +237,7 @@
 		E7967E121B599F31007A5A59 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = iapps.altab.jp;
 				TargetAttributes = {
@@ -183,16 +279,54 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E76398F51B5A08C50077F305 /* Ono.framework in Resources */,
+				E76398F61B5A08C50077F305 /* Alamofire.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E7967E401B59AB3B007A5A59 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		E7CDBE531B59F58700C10774 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E7967E161B599F31007A5A59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E763990E1B5B6FAA0077F305 /* HatebuCategory.swift in Sources */,
+				E76399081B5B642F0077F305 /* TagFeedRequest.swift in Sources */,
+				E76399041B5B46460077F305 /* BaseFeedRequest.swift in Sources */,
+				E7967E3C1B59A8FD007A5A59 /* HatebuFeedItem.swift in Sources */,
+				E7967E361B59A130007A5A59 /* HatebuFeed.swift in Sources */,
+				E7967E3A1B59A32B007A5A59 /* HotFeedRequest.swift in Sources */,
+				E76399001B5B43D40077F305 /* NewFeedRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +334,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E76399101B5B8D3E0077F305 /* TagFeedRequestTests.swift in Sources */,
+				E76399061B5B59D40077F305 /* NewFeedRequestTests.swift in Sources */,
 				E7967E2B1B599F31007A5A59 /* HatebuFeedTests.swift in Sources */,
+				E76398FE1B5B434D0077F305 /* HotFeedRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,26 +444,31 @@
 		E7967E301B599F31007A5A59 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS/";
 				INFOPLIST_FILE = HatebuFeed/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.altab.iapps.lib.HatebuFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		E7967E311B599F31007A5A59 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS/";
 				INFOPLIST_FILE = HatebuFeed/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -339,8 +481,9 @@
 		E7967E331B599F31007A5A59 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS/";
 				INFOPLIST_FILE = HatebuFeedTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Carthage/Build/iOS/";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.altab.iapps.lib.HatebuFeedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -349,8 +492,9 @@
 		E7967E341B599F31007A5A59 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS/";
 				INFOPLIST_FILE = HatebuFeedTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Carthage/Build/iOS/";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.altab.iapps.lib.HatebuFeedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -375,6 +519,7 @@
 				E7967E311B599F31007A5A59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7967E321B599F31007A5A59 /* Build configuration list for PBXNativeTarget "HatebuFeedTests" */ = {
 			isa = XCConfigurationList;
@@ -383,6 +528,7 @@
 				E7967E341B599F31007A5A59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
