@@ -23,7 +23,7 @@
 		E763991B1B5BA10F0077F305 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E763991A1B5BA10F0077F305 /* RealmSwift.framework */; };
 		E763991D1B5BAD7D0077F305 /* FeedItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763991C1B5BAD7D0077F305 /* FeedItemTests.swift */; };
 		E763991F1B5BEE2B0077F305 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763991E1B5BEE2B0077F305 /* Config.swift */; };
-		E76399231B5C7BAB0077F305 /* HatebuFeedConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399221B5C7BAB0077F305 /* HatebuFeedConfigTests.swift */; };
+		E76399231B5C7BAB0077F305 /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399221B5C7BAB0077F305 /* ConfigTests.swift */; };
 		E76399251B5CB3BB0077F305 /* HatebuFeedFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399241B5CB3BB0077F305 /* HatebuFeedFrameworkTests.swift */; };
 		E7967E1F1B599F31007A5A59 /* HatebuFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = E7967E1E1B599F31007A5A59 /* HatebuFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7967E261B599F31007A5A59 /* HatebuFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7967E1B1B599F31007A5A59 /* HatebuFeed.framework */; };
@@ -72,7 +72,7 @@
 		E763991A1B5BA10F0077F305 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E763991C1B5BAD7D0077F305 /* FeedItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItemTests.swift; sourceTree = "<group>"; };
 		E763991E1B5BEE2B0077F305 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		E76399221B5C7BAB0077F305 /* HatebuFeedConfigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuFeedConfigTests.swift; sourceTree = "<group>"; };
+		E76399221B5C7BAB0077F305 /* ConfigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
 		E76399241B5CB3BB0077F305 /* HatebuFeedFrameworkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuFeedFrameworkTests.swift; sourceTree = "<group>"; };
 		E7967E1B1B599F31007A5A59 /* HatebuFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HatebuFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7967E1E1B599F31007A5A59 /* HatebuFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HatebuFeed.h; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				E7967E2A1B599F31007A5A59 /* HatebuFeedTests.swift */,
-				E76399221B5C7BAB0077F305 /* HatebuFeedConfigTests.swift */,
+				E76399221B5C7BAB0077F305 /* ConfigTests.swift */,
 				E76398FD1B5B434D0077F305 /* HotFeedRequestTests.swift */,
 				E76399051B5B59D40077F305 /* NewFeedRequestTests.swift */,
 				E763990F1B5B8D3E0077F305 /* TagFeedRequestTests.swift */,
@@ -348,7 +348,7 @@
 				E763991D1B5BAD7D0077F305 /* FeedItemTests.swift in Sources */,
 				E76399251B5CB3BB0077F305 /* HatebuFeedFrameworkTests.swift in Sources */,
 				E7967E2B1B599F31007A5A59 /* HatebuFeedTests.swift in Sources */,
-				E76399231B5C7BAB0077F305 /* HatebuFeedConfigTests.swift in Sources */,
+				E76399231B5C7BAB0077F305 /* ConfigTests.swift in Sources */,
 				E76398FE1B5B434D0077F305 /* HotFeedRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
