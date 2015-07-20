@@ -7,8 +7,9 @@
 //
 
 import Foundation
-import Alamofire
 import Ono
+import Realm
+import RealmSwift
 
 public protocol ResponseObjectSerializable {
   init(element: ONOXMLElement)
@@ -26,16 +27,25 @@ private func formatDcDate(text : String) -> NSDate {
   return dateFormatter.dateFromString(text)!
 }
 
-public final class HatebuFeedItem: ResponseObjectSerializable {
-  let title : String
-  let desc : String
-  let url : String
-  let hatebuCount : Int32
-  let no : Int32
-  let dcDate: NSDate
-  let dcSubject : String
+public final class HatebuFeedItem: Object, ResponseObjectSerializable {
+  dynamic var title : String = ""
+  dynamic var desc : String = ""
+  dynamic var url : String = ""
+  dynamic var hatebuCount : Int32 = 0
+  dynamic var no : Int32 = 0
+  dynamic var dcDate: NSDate = NSDate.new()
+  dynamic var dcSubject : String = ""
 
-  required public init(element: ONOXMLElement) {
+  dynamic var createdAt : NSDate = NSDate.new()
+  dynamic var updatedAt : NSDate = NSDate.new()
+
+  var categories : [HatebuCategory] {
+    return linkingObjects(HatebuCategory.self, forProperty: "feedItems")
+  }
+
+  convenience required public init(element: ONOXMLElement) {
+    self.init()
+
     self.title = element.firstChildWithTag("title").stringValue()
     self.desc = element.firstChildWithTag("description").stringValue()
     self.url = element.firstChildWithTag("link").stringValue()
@@ -51,5 +61,20 @@ public final class HatebuFeedItem: ResponseObjectSerializable {
     )
 
     self.dcSubject = element.firstChildWithTag("subject", inNamespace: "dc").stringValue()
+  }
+
+  override public class func primaryKey() -> String? {
+    return "url"
+  }
+
+  override public class func indexedProperties() -> [String] {
+    return ["createdAt", "no"]
+  }
+
+  public final func isBelongsTo(category : HatebuCategory) -> Bool {
+    let list = self.categories.filter { (m) -> Bool in
+      return (m.type == category.type && m.name == category.name)
+    }
+    return (list.count > 0)
   }
 }
