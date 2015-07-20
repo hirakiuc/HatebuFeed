@@ -21,7 +21,7 @@
 		E76399101B5B8D3E0077F305 /* TagFeedRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763990F1B5B8D3E0077F305 /* TagFeedRequestTests.swift */; };
 		E76399191B5BA10A0077F305 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E76399171B5BA0E40077F305 /* Realm.framework */; };
 		E763991B1B5BA10F0077F305 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E763991A1B5BA10F0077F305 /* RealmSwift.framework */; };
-		E763991D1B5BAD7D0077F305 /* HatebuFeedItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763991C1B5BAD7D0077F305 /* HatebuFeedItemTests.swift */; };
+		E763991D1B5BAD7D0077F305 /* FeedItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763991C1B5BAD7D0077F305 /* FeedItemTests.swift */; };
 		E763991F1B5BEE2B0077F305 /* HatebuFeedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763991E1B5BEE2B0077F305 /* HatebuFeedConfig.swift */; };
 		E76399231B5C7BAB0077F305 /* HatebuFeedConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399221B5C7BAB0077F305 /* HatebuFeedConfigTests.swift */; };
 		E76399251B5CB3BB0077F305 /* HatebuFeedFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399241B5CB3BB0077F305 /* HatebuFeedFrameworkTests.swift */; };
@@ -70,7 +70,7 @@
 		E763990F1B5B8D3E0077F305 /* TagFeedRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFeedRequestTests.swift; sourceTree = "<group>"; };
 		E76399171B5BA0E40077F305 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E763991A1B5BA10F0077F305 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		E763991C1B5BAD7D0077F305 /* HatebuFeedItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuFeedItemTests.swift; sourceTree = "<group>"; };
+		E763991C1B5BAD7D0077F305 /* FeedItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItemTests.swift; sourceTree = "<group>"; };
 		E763991E1B5BEE2B0077F305 /* HatebuFeedConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuFeedConfig.swift; sourceTree = "<group>"; };
 		E76399221B5C7BAB0077F305 /* HatebuFeedConfigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuFeedConfigTests.swift; sourceTree = "<group>"; };
 		E76399241B5CB3BB0077F305 /* HatebuFeedFrameworkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuFeedFrameworkTests.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 				E76398FD1B5B434D0077F305 /* HotFeedRequestTests.swift */,
 				E76399051B5B59D40077F305 /* NewFeedRequestTests.swift */,
 				E763990F1B5B8D3E0077F305 /* TagFeedRequestTests.swift */,
-				E763991C1B5BAD7D0077F305 /* HatebuFeedItemTests.swift */,
+				E763991C1B5BAD7D0077F305 /* FeedItemTests.swift */,
 				E76399241B5CB3BB0077F305 /* HatebuFeedFrameworkTests.swift */,
 				E7967E2C1B599F31007A5A59 /* Info.plist */,
 			);
@@ -345,7 +345,7 @@
 			files = (
 				E76399101B5B8D3E0077F305 /* TagFeedRequestTests.swift in Sources */,
 				E76399061B5B59D40077F305 /* NewFeedRequestTests.swift in Sources */,
-				E763991D1B5BAD7D0077F305 /* HatebuFeedItemTests.swift in Sources */,
+				E763991D1B5BAD7D0077F305 /* FeedItemTests.swift in Sources */,
 				E76399251B5CB3BB0077F305 /* HatebuFeedFrameworkTests.swift in Sources */,
 				E7967E2B1B599F31007A5A59 /* HatebuFeedTests.swift in Sources */,
 				E76399231B5C7BAB0077F305 /* HatebuFeedConfigTests.swift in Sources */,
