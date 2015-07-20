@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 import Ono
+import Realm
+import RealmSwift
 
 extension Dictionary {
   public func merge(d : Dictionary) -> Dictionary {
@@ -73,6 +75,18 @@ extension Request {
       completionHandler(request!, response, feedItems as! Array<HatebuFeedItem>, error)
     }
   }
+}
+
+public func configure(configureHandler: (config: HatebuFeedConfig) -> Void) -> Void {
+  return configureHandler(config: HatebuFeedConfig.sharedConfig)
+}
+
+public func configuration() -> HatebuFeedConfig {
+  return HatebuFeedConfig.sharedConfig
+}
+
+public func realm() -> Realm? {
+  return configuration().realm()
 }
 
 public class HotCategory {

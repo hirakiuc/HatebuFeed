@@ -1,0 +1,3 @@
+github "Alamofire/Alamofire" "swift-2.0"
+github "hirakiuc/Ono" "fix_build_error_on_xcode7beta3"
+github "ReactKit/SwiftTask" "swift/2.0"
