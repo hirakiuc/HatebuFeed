@@ -1,5 +1,5 @@
 //
-//  HatebuFeedConfig.swift
+//  Config.swift
 //  HatebuFeed
 //
 //  Created by Daisuke Hirakiuchi on 2015/07/19.
@@ -16,8 +16,8 @@ private func documentPath() -> NSString {
 
 private let RealmName : String = "HatebuFeed.realm"
 
-public class HatebuFeedConfig : NSObject {
-  static let sharedConfig = HatebuFeedConfig()
+public class Config : NSObject {
+  static let sharedConfig = Config()
   var realmPath : String
   var requestConfiguration : NSURLSessionConfiguration
 

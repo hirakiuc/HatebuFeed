@@ -1,5 +1,5 @@
 //
-//  HatebuFeedConfigTests.swift
+//  ConfigTests.swift
 //  HatebuFeed
 //
 //  Created by Daisuke Hirakiuchi on 2015/07/20.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import HatebuFeed
 
-class HatebuFeedConfigTests: XCTestCase {
+class ConfigTests: XCTestCase {
   var config = HatebuFeed.configuration()
 
   override func setUp() {
@@ -23,7 +23,7 @@ class HatebuFeedConfigTests: XCTestCase {
   }
 
   func testInstance() {
-    XCTAssertTrue(config.dynamicType === HatebuFeedConfig.self)
+    XCTAssertTrue(config.dynamicType === Config.self)
 
     let otherConfig = HatebuFeed.configuration()
     XCTAssertEqual(self.config, otherConfig)
@@ -38,7 +38,7 @@ class HatebuFeedConfigTests: XCTestCase {
   }
 
   func testRealm() {
-    let realm = HatebuFeedConfig.sharedConfig.realm()
+    let realm = Config.sharedConfig.realm()
     XCTAssertNotNil(realm)
   }
 }

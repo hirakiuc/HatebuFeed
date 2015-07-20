@@ -26,7 +26,7 @@ class HatebuFeedTests: XCTestCase {
 
   func testConfiguration() {
     let config = HatebuFeed.configuration()
-    XCTAssertTrue(config.dynamicType === HatebuFeedConfig.self)
+    XCTAssertTrue(config.dynamicType === Config.self)
     XCTAssertNotNil(config.realmPath)
   }
 

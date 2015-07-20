@@ -77,12 +77,12 @@ extension Request {
   }
 }
 
-public func configure(configureHandler: (config: HatebuFeedConfig) -> Void) -> Void {
-  return configureHandler(config: HatebuFeedConfig.sharedConfig)
+public func configure(configureHandler: (config: Config) -> Void) -> Void {
+  return configureHandler(config: Config.sharedConfig)
 }
 
-public func configuration() -> HatebuFeedConfig {
-  return HatebuFeedConfig.sharedConfig
+public func configuration() -> Config {
+  return Config.sharedConfig
 }
 
 public func realm() -> Realm? {
