@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import Realm
+import RealmSwift
 
 public class NewFeedRequest: BaseFeedRequest {
   let category : HatebuCategory
   let feedPath : String = "entrylist"
 
   init(name: HatebuCategoryName) {
-    self.category = HatebuCategory(type: HatebuCategoryType.NEW, name: name)
+    self.category = HatebuCategory.findOrCreate(HatebuCategoryType.NEW, name: name.rawValue)
   }
 
   public func url() -> (url: String, params: Dictionary<String, String>) {
@@ -28,5 +30,9 @@ public class NewFeedRequest: BaseFeedRequest {
         ["mode": "rss"]
       )
     }
+  }
+
+  public  func feedItems(name: HatebuCategoryName) -> Results<HatebuFeedItem> {
+    return loadFeedItems(HatebuCategoryType.NEW, name: self.category.name)
   }
 }

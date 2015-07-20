@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import Realm
+import RealmSwift
 
 public class HotFeedRequest: BaseFeedRequest {
   let category : HatebuCategory
   let feedPath : String = "hotentry"
 
   init(name: HatebuCategoryName) {
-    self.category = HatebuCategory(type: HatebuCategoryType.HOT, name: name)
+    self.category = HatebuCategory.findOrCreate(HatebuCategoryType.HOT, name: name.rawValue)
   }
 
   public func url() -> (url: String, params: Dictionary<String, String>) {
@@ -28,5 +30,9 @@ public class HotFeedRequest: BaseFeedRequest {
         [String: String]()
       )
     }
+  }
+
+  public func feedItems(name: HatebuCategoryName) -> Results<HatebuFeedItem> {
+    return loadFeedItems(HatebuCategoryType.HOT, name: self.category.name)
   }
 }

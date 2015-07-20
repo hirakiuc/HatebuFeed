@@ -8,6 +8,8 @@
 
 import Foundation
 import Alamofire
+import Realm
+import RealmSwift
 
 protocol BaseFeedRequest {
   var category : HatebuCategory { get }
@@ -39,8 +41,45 @@ extension BaseFeedRequest {
         if let error = error {
           completionHandler([], error)
         } else {
+
+          self.importFeedItems(self.category, feedItems: feedItems)
+
           completionHandler(feedItems, nil)
         }
       })
+  }
+
+  internal func loadFeedItems(type: HatebuCategoryType, name: String) -> Results<HatebuFeedItem> {
+    let realm = HatebuFeed.realm()!
+
+    let sortDescriptors = [
+      SortDescriptor(property: "createdAt", ascending: false),
+      SortDescriptor(property: "no", ascending: true)
+    ]
+
+    return realm.objects(HatebuFeedItem)
+      .filter("ANY (categories.type = %@ and categories.name = %@",
+        type.rawValue, name
+    ).sorted(sortDescriptors)
+  }
+
+  internal func importFeedItems(category: HatebuCategory, feedItems: Array<HatebuFeedItem>) -> Bool {
+    let realm = HatebuFeed.realm()!
+
+    for feedItem in feedItems {
+      realm.write {
+        var item = realm.objects(HatebuFeedItem).filter("url = %@", feedItem.url).first
+        if item == nil {
+          realm.add(feedItem)
+          item = feedItem
+        }
+
+//        if item?.isBelongsTo(category) == false {
+//          category.feedItems.append(item!)
+//        }
+      }
+    }
+
+    return true
   }
 }

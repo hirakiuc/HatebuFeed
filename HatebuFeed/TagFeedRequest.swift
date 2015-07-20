@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import Realm
+import RealmSwift
 
 public class TagFeedRequest: BaseFeedRequest {
   let category : HatebuCategory
   let feedPath : String = "search/tag"
 
   init(tag: String) {
-    self.category = HatebuCategory(tag: tag)
+    self.category = HatebuCategory.findOrCreate(HatebuCategoryType.TAG, name: tag)
   }
 
   public func url() -> (url: String, params:  Dictionary<String, String>) {
@@ -21,5 +23,9 @@ public class TagFeedRequest: BaseFeedRequest {
       String(format: "%@/%@", self.baseURL, self.feedPath),
       ["q": self.category.name, "mode": "rss"]
     )
+  }
+
+  public func feedItems(tag: String) -> Results<HatebuFeedItem> {
+    return loadFeedItems(HatebuCategoryType.TAG, name: self.category.name)
   }
 }
