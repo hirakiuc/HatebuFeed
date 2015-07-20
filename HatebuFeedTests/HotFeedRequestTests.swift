@@ -10,7 +10,7 @@ import XCTest
 @testable import HatebuFeed
 
 class HotFeedRequestTests: XCTestCase {
-  let hotFeed : HotFeedRequest = HotFeedRequest(name: HatebuCategoryName.IT)
+  let hotFeed : HotFeedRequest = HotFeedRequest(name: FeedCategoryName.IT)
 
   override func setUp() {
     super.setUp()
@@ -29,7 +29,7 @@ class HotFeedRequestTests: XCTestCase {
   }
 
   func testName() {
-    XCTAssertEqual(hotFeed.name, HatebuCategoryName.IT.rawValue)
+    XCTAssertEqual(hotFeed.name, FeedCategoryName.IT.rawValue)
   }
 
   func testNonTotalUrl() {
@@ -40,7 +40,7 @@ class HotFeedRequestTests: XCTestCase {
   }
 
   func testTotalUrl() {
-    let feed = HotFeedRequest(name: HatebuCategoryName.TOTAL)
+    let feed = HotFeedRequest(name: FeedCategoryName.TOTAL)
     let ret = feed.url()
 
     XCTAssertEqual(ret.url, "http://b.hatena.ne.jp/hotentry")

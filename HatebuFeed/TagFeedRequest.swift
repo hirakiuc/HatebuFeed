@@ -11,11 +11,11 @@ import Realm
 import RealmSwift
 
 public class TagFeedRequest: BaseFeedRequest {
-  let category : HatebuCategory
+  let category : FeedCategory
   let feedPath : String = "search/tag"
 
   init(tag: String) {
-    self.category = HatebuCategory.findOrCreate(HatebuCategoryType.TAG, name: tag)
+    self.category = FeedCategory.findOrCreate(FeedCategoryType.TAG, name: tag)
   }
 
   public func url() -> (url: String, params:  Dictionary<String, String>) {
@@ -25,7 +25,7 @@ public class TagFeedRequest: BaseFeedRequest {
     )
   }
 
-  public func feedItems(tag: String) -> Results<HatebuFeedItem> {
-    return loadFeedItems(HatebuCategoryType.TAG, name: self.category.name)
+  public func feedItems(tag: String) -> Results<FeedItem> {
+    return loadFeedItems(FeedCategoryType.TAG, name: self.category.name)
   }
 }

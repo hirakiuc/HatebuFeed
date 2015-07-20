@@ -11,15 +11,15 @@ import Realm
 import RealmSwift
 
 public class HotFeedRequest: BaseFeedRequest {
-  let category : HatebuCategory
+  let category : FeedCategory
   let feedPath : String = "hotentry"
 
-  init(name: HatebuCategoryName) {
-    self.category = HatebuCategory.findOrCreate(HatebuCategoryType.HOT, name: name.rawValue)
+  init(name: FeedCategoryName) {
+    self.category = FeedCategory.findOrCreate(FeedCategoryType.HOT, name: name.rawValue)
   }
 
   public func url() -> (url: String, params: Dictionary<String, String>) {
-    if self.category.name == HatebuCategoryName.TOTAL.rawValue {
+    if self.category.name == FeedCategoryName.TOTAL.rawValue {
       return (
         String(format: "%@/%@", self.baseURL, self.feedPath),
         ["mode": "rss"]
@@ -32,7 +32,7 @@ public class HotFeedRequest: BaseFeedRequest {
     }
   }
 
-  public func feedItems(name: HatebuCategoryName) -> Results<HatebuFeedItem> {
-    return loadFeedItems(HatebuCategoryType.HOT, name: self.category.name)
+  public func feedItems(name: FeedCategoryName) -> Results<FeedItem> {
+    return loadFeedItems(FeedCategoryType.HOT, name: self.category.name)
   }
 }

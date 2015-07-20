@@ -1,5 +1,5 @@
 //
-//  HatebuFeedItemTests.swift
+//  FeedItemTests.swift
 //  HatebuFeed
 //
 //  Created by Daisuke Hirakiuchi on 2015/07/19.
@@ -10,8 +10,8 @@ import XCTest
 import RealmSwift
 @testable import HatebuFeed
 
-class HatebuFeedItemTests: XCTestCase {
-  var realm : Realm = Realm(inMemoryIdentifier: "HatebuFeedItemTestsRealm")
+class FeedItemTests: XCTestCase {
+  var realm : Realm = Realm(inMemoryIdentifier: "FeedItemTestsRealm")
 
   override func setUp() {
     super.setUp()
@@ -30,7 +30,7 @@ class HatebuFeedItemTests: XCTestCase {
       for idx in 0..<10 {
         let now = NSDate.new()
 
-        let item = HatebuFeedItem()
+        let item = FeedItem()
         item.title = String(format: "title-%d", idx)
         item.desc = "desc"
         item.url = String(format: "http://b.hatena.ne.jp/%d", idx)
@@ -45,19 +45,19 @@ class HatebuFeedItemTests: XCTestCase {
       }
     }
 
-    XCTAssertEqual(realm.objects(HatebuFeedItem).count, 10)
+    XCTAssertEqual(realm.objects(FeedItem).count, 10)
   }
 
   func testSaveWithCategory() {
     realm.write {
-      let category = HatebuCategory()
-      category.type = HatebuCategoryType.HOT.rawValue
-      category.name = HatebuCategoryName.IT.rawValue
+      let category = FeedCategory()
+      category.type = FeedCategoryType.HOT.rawValue
+      category.name = FeedCategoryName.IT.rawValue
 
       self.realm.add(category)
 
       let now = NSDate.new()
-      let item = HatebuFeedItem()
+      let item = FeedItem()
       item.title = "test-title"
       item.desc = "description"
       item.url = "http://b.hatena.ne.jp/test"
@@ -72,7 +72,7 @@ class HatebuFeedItemTests: XCTestCase {
       self.realm.add(item)
     }
 
-    let feedItems = realm.objects(HatebuFeedItem).filter("url = %@", "http://b.hatena.ne.jp/test")
+    let feedItems = realm.objects(FeedItem).filter("url = %@", "http://b.hatena.ne.jp/test")
     XCTAssertEqual(feedItems.count, 1)
     let item = feedItems[0]
     XCTAssertEqual(item.url, "http://b.hatena.ne.jp/test")

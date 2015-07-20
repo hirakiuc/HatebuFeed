@@ -10,7 +10,7 @@ import XCTest
 @testable import HatebuFeed
 
 class NewFeedRequestTests: XCTestCase {
-  let newFeed : NewFeedRequest = NewFeedRequest(name: HatebuCategoryName.SOCIAL)
+  let newFeed : NewFeedRequest = NewFeedRequest(name: FeedCategoryName.SOCIAL)
 
   override func setUp() {
     super.setUp()
@@ -29,7 +29,7 @@ class NewFeedRequestTests: XCTestCase {
   }
 
   func testName() {
-    XCTAssertEqual(newFeed.name, HatebuCategoryName.SOCIAL.rawValue)
+    XCTAssertEqual(newFeed.name, FeedCategoryName.SOCIAL.rawValue)
   }
 
   func testNonTotalUrl() {
@@ -40,7 +40,7 @@ class NewFeedRequestTests: XCTestCase {
   }
 
   func testTotalURL() {
-    let feed = NewFeedRequest(name: HatebuCategoryName.TOTAL)
+    let feed = NewFeedRequest(name: FeedCategoryName.TOTAL)
     let ret = feed.url()
 
     XCTAssertEqual(ret.url, "http://b.hatena.ne.jp/entrylist")

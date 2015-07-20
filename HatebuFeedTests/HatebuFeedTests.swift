@@ -39,20 +39,20 @@ class HatebuFeedTests: XCTestCase {
   }
 
   func testHotFeed() {
-    let hotFeed = HatebuFeed.HotFeed(HatebuCategoryName.TOTAL)
+    let hotFeed = HatebuFeed.HotFeed(FeedCategoryName.TOTAL)
 
     XCTAssertNotNil(hotFeed)
     XCTAssertTrue(hotFeed.dynamicType === HotFeedRequest.self)
-    XCTAssertEqual(hotFeed.name, HatebuCategoryName.TOTAL.rawValue)
+    XCTAssertEqual(hotFeed.name, FeedCategoryName.TOTAL.rawValue)
     XCTAssertNotNil(hotFeed.category)
   }
 
   func testNewFeed() {
-    let newFeed = HatebuFeed.NewFeed(HatebuCategoryName.TOTAL)
+    let newFeed = HatebuFeed.NewFeed(FeedCategoryName.TOTAL)
 
     XCTAssertNotNil(newFeed)
     XCTAssertTrue(newFeed.dynamicType === NewFeedRequest.self)
-    XCTAssertEqual(newFeed.name, HatebuCategoryName.TOTAL.rawValue)
+    XCTAssertEqual(newFeed.name, FeedCategoryName.TOTAL.rawValue)
     XCTAssertNotNil(newFeed.category)
   }
 

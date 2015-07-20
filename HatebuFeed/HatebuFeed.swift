@@ -56,11 +56,11 @@ extension Request {
         let XML : ONOXMLDocument? = try ONOXMLDocument(data: data)
         let elements : Array<ONOXMLElement> = XML?.rootElement.children as! Array<ONOXMLElement>
 
-        let items : Array<HatebuFeedItem> =
+        let items : Array<FeedItem> =
           elements.filter({ (element: ONOXMLElement) -> Bool in
             return element.tag == "item"
-          }).map({ (element: ONOXMLElement) -> HatebuFeedItem in
-            return HatebuFeedItem(element: element)
+          }).map({ (element: ONOXMLElement) -> FeedItem in
+            return FeedItem(element: element)
           })
 
         return (items, nil)
@@ -70,9 +70,9 @@ extension Request {
     }
   }
 
-  func responseFeedItem(completionHandler: (NSURLRequest, NSHTTPURLResponse?, Array<HatebuFeedItem>, NSError?) -> Void) -> Self {
+  func responseFeedItem(completionHandler: (NSURLRequest, NSHTTPURLResponse?, Array<FeedItem>, NSError?) -> Void) -> Self {
     return response(serializer: Request.FeedItemSerializer()) { request, response, feedItems, error in
-      completionHandler(request!, response, feedItems as! Array<HatebuFeedItem>, error)
+      completionHandler(request!, response, feedItems as! Array<FeedItem>, error)
     }
   }
 }
@@ -90,22 +90,22 @@ public func realm() -> Realm? {
 }
 
 public class HotCategory {
-  public class func all() -> Array<HatebuCategory> {
-    return [HatebuCategory]()
+  public class func all() -> Array<FeedCategory> {
+    return [FeedCategory]()
   }
 }
 
-public func HotFeed(name: HatebuCategoryName) -> HotFeedRequest {
+public func HotFeed(name: FeedCategoryName) -> HotFeedRequest {
   return HotFeedRequest(name: name)
 }
 
 public class NewCategory {
-  public class func all() -> Array<HatebuCategory> {
-    return [HatebuCategory]()
+  public class func all() -> Array<FeedCategory> {
+    return [FeedCategory]()
   }
 }
 
-public func NewFeed(name: HatebuCategoryName) -> NewFeedRequest {
+public func NewFeed(name: FeedCategoryName) -> NewFeedRequest {
   return NewFeedRequest(name: name)
 }
 

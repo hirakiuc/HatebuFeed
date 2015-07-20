@@ -17,7 +17,7 @@
 		E76399041B5B46460077F305 /* BaseFeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399031B5B46460077F305 /* BaseFeedRequest.swift */; };
 		E76399061B5B59D40077F305 /* NewFeedRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399051B5B59D40077F305 /* NewFeedRequestTests.swift */; };
 		E76399081B5B642F0077F305 /* TagFeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76399071B5B642F0077F305 /* TagFeedRequest.swift */; };
-		E763990E1B5B6FAA0077F305 /* HatebuCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763990D1B5B6FAA0077F305 /* HatebuCategory.swift */; };
+		E763990E1B5B6FAA0077F305 /* FeedCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763990D1B5B6FAA0077F305 /* FeedCategory.swift */; };
 		E76399101B5B8D3E0077F305 /* TagFeedRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763990F1B5B8D3E0077F305 /* TagFeedRequestTests.swift */; };
 		E76399191B5BA10A0077F305 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E76399171B5BA0E40077F305 /* Realm.framework */; };
 		E763991B1B5BA10F0077F305 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E763991A1B5BA10F0077F305 /* RealmSwift.framework */; };
@@ -31,7 +31,7 @@
 		E7967E361B59A130007A5A59 /* HatebuFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7967E351B59A130007A5A59 /* HatebuFeed.swift */; };
 		E7967E381B59A279007A5A59 /* HatebuFeed.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E7967E1E1B599F31007A5A59 /* HatebuFeed.h */; };
 		E7967E3A1B59A32B007A5A59 /* HotFeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7967E391B59A32B007A5A59 /* HotFeedRequest.swift */; };
-		E7967E3C1B59A8FD007A5A59 /* HatebuFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7967E3B1B59A8FD007A5A59 /* HatebuFeedItem.swift */; };
+		E7967E3C1B59A8FD007A5A59 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7967E3B1B59A8FD007A5A59 /* FeedItem.swift */; };
 		E7967E3F1B59AAAE007A5A59 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7967E3D1B59AAA1007A5A59 /* Alamofire.framework */; };
 		E7CDBE511B59F4FA00C10774 /* Ono.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CDBE501B59F4FA00C10774 /* Ono.framework */; };
 		E7CDBE561B5A039000C10774 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CDBE541B59F5C500C10774 /* libxml2.tbd */; };
@@ -66,7 +66,7 @@
 		E76399031B5B46460077F305 /* BaseFeedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFeedRequest.swift; sourceTree = "<group>"; };
 		E76399051B5B59D40077F305 /* NewFeedRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeedRequestTests.swift; sourceTree = "<group>"; };
 		E76399071B5B642F0077F305 /* TagFeedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFeedRequest.swift; sourceTree = "<group>"; };
-		E763990D1B5B6FAA0077F305 /* HatebuCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuCategory.swift; sourceTree = "<group>"; };
+		E763990D1B5B6FAA0077F305 /* FeedCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCategory.swift; sourceTree = "<group>"; };
 		E763990F1B5B8D3E0077F305 /* TagFeedRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFeedRequestTests.swift; sourceTree = "<group>"; };
 		E76399171B5BA0E40077F305 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E763991A1B5BA10F0077F305 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		E7967E2C1B599F31007A5A59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7967E351B59A130007A5A59 /* HatebuFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuFeed.swift; sourceTree = "<group>"; };
 		E7967E391B59A32B007A5A59 /* HotFeedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotFeedRequest.swift; sourceTree = "<group>"; };
-		E7967E3B1B59A8FD007A5A59 /* HatebuFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HatebuFeedItem.swift; sourceTree = "<group>"; };
+		E7967E3B1B59A8FD007A5A59 /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		E7967E3D1B59AAA1007A5A59 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		E7CDBE501B59F4FA00C10774 /* Ono.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ono.framework; path = Carthage/Build/iOS/Ono.framework; sourceTree = "<group>"; };
 		E7CDBE541B59F5C500C10774 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -129,8 +129,8 @@
 		E763990C1B5B6EEA0077F305 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				E7967E3B1B59A8FD007A5A59 /* HatebuFeedItem.swift */,
-				E763990D1B5B6FAA0077F305 /* HatebuCategory.swift */,
+				E7967E3B1B59A8FD007A5A59 /* FeedItem.swift */,
+				E763990D1B5B6FAA0077F305 /* FeedCategory.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -328,10 +328,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E763990E1B5B6FAA0077F305 /* HatebuCategory.swift in Sources */,
+				E763990E1B5B6FAA0077F305 /* FeedCategory.swift in Sources */,
 				E76399081B5B642F0077F305 /* TagFeedRequest.swift in Sources */,
 				E76399041B5B46460077F305 /* BaseFeedRequest.swift in Sources */,
-				E7967E3C1B59A8FD007A5A59 /* HatebuFeedItem.swift in Sources */,
+				E7967E3C1B59A8FD007A5A59 /* FeedItem.swift in Sources */,
 				E763991F1B5BEE2B0077F305 /* HatebuFeedConfig.swift in Sources */,
 				E7967E361B59A130007A5A59 /* HatebuFeed.swift in Sources */,
 				E7967E3A1B59A32B007A5A59 /* HotFeedRequest.swift in Sources */,

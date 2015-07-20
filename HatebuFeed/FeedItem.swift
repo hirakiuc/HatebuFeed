@@ -1,5 +1,5 @@
 //
-//  HatebuFeedItem.swift
+//  FeedItem.swift
 //  HatebuFeed
 //
 //  Created by Daisuke Hirakiuchi on 2015/07/18.
@@ -27,7 +27,7 @@ private func formatDcDate(text : String) -> NSDate {
   return dateFormatter.dateFromString(text)!
 }
 
-public final class HatebuFeedItem: Object, ResponseObjectSerializable {
+public final class FeedItem: Object, ResponseObjectSerializable {
   dynamic var title : String = ""
   dynamic var desc : String = ""
   dynamic var url : String = ""
@@ -39,8 +39,8 @@ public final class HatebuFeedItem: Object, ResponseObjectSerializable {
   dynamic var createdAt : NSDate = NSDate.new()
   dynamic var updatedAt : NSDate = NSDate.new()
 
-  var categories : [HatebuCategory] {
-    return linkingObjects(HatebuCategory.self, forProperty: "feedItems")
+  var categories : [FeedCategory] {
+    return linkingObjects(FeedCategory.self, forProperty: "feedItems")
   }
 
   convenience required public init(element: ONOXMLElement) {
@@ -71,7 +71,7 @@ public final class HatebuFeedItem: Object, ResponseObjectSerializable {
     return ["createdAt", "no"]
   }
 
-  public final func isBelongsTo(category : HatebuCategory) -> Bool {
+  public final func isBelongsTo(category : FeedCategory) -> Bool {
     let list = self.categories.filter { (m) -> Bool in
       return (m.type == category.type && m.name == category.name)
     }

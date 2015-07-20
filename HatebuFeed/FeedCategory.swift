@@ -1,5 +1,5 @@
 //
-//  HatebuCategory.swift
+//  FeedCategory.swift
 //  HatebuFeed
 //
 //  Created by Daisuke Hirakiuchi on 2015/07/19.
@@ -10,13 +10,13 @@ import Foundation
 import Realm
 import RealmSwift
 
-public enum HatebuCategoryType: String {
+public enum FeedCategoryType: String {
   case HOT = "hot"
   case NEW = "new"
   case TAG = "tag"
 }
 
-public enum HatebuCategoryName: String {
+public enum FeedCategoryName: String {
   case TOTAL = "total"
   case SOCIAL = "social"
   case ECONOMICS = "economics"
@@ -34,14 +34,14 @@ private func uniqueId(type: String, name: String) -> String {
     name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))
 }
 
-public class HatebuCategory : Object {
+public class FeedCategory : Object {
   dynamic var uid : String = ""
   dynamic var type : String = ""
   dynamic var name : String = ""
-  var feedItems = List<HatebuFeedItem>()
+  var feedItems = List<FeedItem>()
 
   // constructor for HotCategory, NewCategory
-  convenience init(type: HatebuCategoryType, name: HatebuCategoryName) {
+  convenience init(type: FeedCategoryType, name: FeedCategoryName) {
     self.init()
 
     self.type = type.rawValue
@@ -53,12 +53,12 @@ public class HatebuCategory : Object {
   convenience init(tag: String) {
     self.init()
 
-    self.type = HatebuCategoryType.TAG.rawValue
+    self.type = FeedCategoryType.TAG.rawValue
     self.name = tag
     self.uid = uniqueId(self.type, name: self.name)
   }
 
-  public class func findOrCreate(type: HatebuCategoryType, name: String) -> HatebuCategory {
+  public class func findOrCreate(type: FeedCategoryType, name: String) -> FeedCategory {
     let realm = HatebuFeed.realm()!
 
     if let category = findBy(realm, type: type, name: name) {
@@ -66,7 +66,7 @@ public class HatebuCategory : Object {
     }
 
     realm.write {
-      realm.create(HatebuCategory.self, value: [
+      realm.create(FeedCategory.self, value: [
         "uid": uniqueId(type.rawValue, name: name),
         "type": type.rawValue,
         "name": name
@@ -76,8 +76,8 @@ public class HatebuCategory : Object {
     return findBy(realm, type: type, name: name)!
   }
 
-  class func findBy(realm: Realm, type: HatebuCategoryType, name: String) -> HatebuCategory? {
-    let result = realm.objects(HatebuCategory).filter("uid = %@", uniqueId(type.rawValue, name: name))
+  class func findBy(realm: Realm, type: FeedCategoryType, name: String) -> FeedCategory? {
+    let result = realm.objects(FeedCategory).filter("uid = %@", uniqueId(type.rawValue, name: name))
     return result.first
   }
 

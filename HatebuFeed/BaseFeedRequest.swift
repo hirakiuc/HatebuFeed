@@ -12,7 +12,7 @@ import Realm
 import RealmSwift
 
 protocol BaseFeedRequest {
-  var category : HatebuCategory { get }
+  var category : FeedCategory { get }
   func url() -> (url: String, params: Dictionary<String, String>)
 }
 
@@ -28,11 +28,11 @@ extension BaseFeedRequest {
     }
   }
 
-  func load(completionHandler: (Array<HatebuFeedItem>, NSError?) -> Void) -> Alamofire.Request {
+  func load(completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request {
     return load([String: String](), completionHandler: completionHandler)
   }
 
-  func load(parameters: Dictionary<String, String>, completionHandler: (Array<HatebuFeedItem>, NSError?) -> Void) -> Alamofire.Request {
+  func load(parameters: Dictionary<String, String>, completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request {
 
     let req = self.url()
 
@@ -49,7 +49,7 @@ extension BaseFeedRequest {
       })
   }
 
-  internal func loadFeedItems(type: HatebuCategoryType, name: String) -> Results<HatebuFeedItem> {
+  internal func loadFeedItems(type: FeedCategoryType, name: String) -> Results<FeedItem> {
     let realm = HatebuFeed.realm()!
 
     let sortDescriptors = [
@@ -57,18 +57,18 @@ extension BaseFeedRequest {
       SortDescriptor(property: "no", ascending: true)
     ]
 
-    return realm.objects(HatebuFeedItem)
+    return realm.objects(FeedItem)
       .filter("ANY (categories.type = %@ and categories.name = %@",
         type.rawValue, name
     ).sorted(sortDescriptors)
   }
 
-  internal func importFeedItems(category: HatebuCategory, feedItems: Array<HatebuFeedItem>) -> Bool {
+  internal func importFeedItems(category: FeedCategory, feedItems: Array<FeedItem>) -> Bool {
     let realm = HatebuFeed.realm()!
 
     for feedItem in feedItems {
       realm.write {
-        var item = realm.objects(HatebuFeedItem).filter("url = %@", feedItem.url).first
+        var item = realm.objects(FeedItem).filter("url = %@", feedItem.url).first
         if item == nil {
           realm.add(feedItem)
           item = feedItem
