@@ -25,7 +25,7 @@ class HotFeedRequestTests: XCTestCase {
   func testInit() {
     XCTAssertNotNil(hotFeed)
     XCTAssertTrue(hotFeed.dynamicType === HotFeedRequest.self)
-    XCTAssertTrue(hotFeed.category.dynamicType === HatebuCategory.self)
+    XCTAssertNotNil(hotFeed.category)
   }
 
   func testName() {

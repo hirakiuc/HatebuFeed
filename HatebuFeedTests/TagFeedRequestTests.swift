@@ -26,7 +26,7 @@ class TagFeedRequestTests: XCTestCase {
   func testInit() {
     XCTAssertNotNil(tagFeed)
     XCTAssertTrue(tagFeed.dynamicType === TagFeedRequest.self)
-    XCTAssertTrue(tagFeed.category.dynamicType === HatebuCategory.self)
+    XCTAssertNotNil(tagFeed.category)
   }
 
   func testName() {

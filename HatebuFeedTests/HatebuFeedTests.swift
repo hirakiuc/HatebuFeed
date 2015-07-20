@@ -9,10 +9,11 @@
 import XCTest
 import Alamofire
 import Ono
+import Realm
+import RealmSwift
 @testable import HatebuFeed
 
 class HatebuFeedTests: XCTestCase {
-    
   override func setUp() {
     super.setUp()
     // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -23,9 +24,18 @@ class HatebuFeedTests: XCTestCase {
     super.tearDown()
   }
 
-  func testExample() {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+  func testConfiguration() {
+    let config = HatebuFeed.configuration()
+    XCTAssertTrue(config.dynamicType === HatebuFeedConfig.self)
+    XCTAssertNotNil(config.realmPath)
+  }
+
+  func testConfigure() {
+    HatebuFeed.configure({ config in
+      config.realmPath = "hoge"
+    })
+    let config = HatebuFeed.configuration()
+    XCTAssertEqual(config.realmPath, "hoge")
   }
 
   func testHotFeed() {
@@ -34,7 +44,7 @@ class HatebuFeedTests: XCTestCase {
     XCTAssertNotNil(hotFeed)
     XCTAssertTrue(hotFeed.dynamicType === HotFeedRequest.self)
     XCTAssertEqual(hotFeed.name, HatebuCategoryName.TOTAL.rawValue)
-    XCTAssertTrue(hotFeed.category.dynamicType === HatebuCategory.self)
+    XCTAssertNotNil(hotFeed.category)
   }
 
   func testNewFeed() {
@@ -43,7 +53,7 @@ class HatebuFeedTests: XCTestCase {
     XCTAssertNotNil(newFeed)
     XCTAssertTrue(newFeed.dynamicType === NewFeedRequest.self)
     XCTAssertEqual(newFeed.name, HatebuCategoryName.TOTAL.rawValue)
-    XCTAssertTrue(newFeed.category.dynamicType === HatebuCategory.self)
+    XCTAssertNotNil(newFeed.category)
   }
 
   func testTag() {
@@ -52,6 +62,6 @@ class HatebuFeedTests: XCTestCase {
     XCTAssertNotNil(tagFeed)
     XCTAssertTrue(tagFeed.dynamicType === TagFeedRequest.self)
     XCTAssertEqual(tagFeed.name, "swift")
-    XCTAssertTrue(tagFeed.category.dynamicType === HatebuCategory.self)
+    XCTAssertNotNil(tagFeed.category)
   }
 }

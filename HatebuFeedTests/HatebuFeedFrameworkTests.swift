@@ -6,4 +6,17 @@
 //  Copyright © 2015年 iapps.altab.jp. All rights reserved.
 //
 
-import Foundation
+import XCTest
+@testable import HatebuFeed
+
+class HatebuFeedFrameworkTests: XCTestCase {
+  override func setUp() {
+    super.setUp()
+    // do something
+  }
+
+  override func tearDown() {
+    // do something
+    super.tearDown()
+  }
+}
