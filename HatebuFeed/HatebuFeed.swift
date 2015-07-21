@@ -95,20 +95,24 @@ public class HotCategory {
   }
 }
 
-public func HotFeed(name: FeedCategoryName) -> HotFeedRequest {
-  return HotFeedRequest(name: name)
-}
-
 public class NewCategory {
   public class func all() -> Array<FeedCategory> {
     return [FeedCategory]()
   }
 }
 
+public func HotFeed(name: FeedCategoryName) -> HotFeedRequest {
+  return HotFeedRequest(name: name)
+}
+
 public func NewFeed(name: FeedCategoryName) -> NewFeedRequest {
   return NewFeedRequest(name: name)
 }
 
-public func Tag(name: String) -> TagFeedRequest {
+public func TagFeed(name: String) -> TagFeedRequest {
   return TagFeedRequest(tag: name)
+}
+
+public func UserFeed(userId: String) -> UserFeedRequest {
+  return UserFeedRequest(userId: userId)
 }
