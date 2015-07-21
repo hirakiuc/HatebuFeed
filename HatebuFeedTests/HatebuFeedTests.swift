@@ -56,12 +56,21 @@ class HatebuFeedTests: XCTestCase {
     XCTAssertNotNil(newFeed.category)
   }
 
-  func testTag() {
-    let tagFeed = HatebuFeed.Tag("swift")
+  func testTagFeed() {
+    let tagFeed = HatebuFeed.TagFeed("swift")
 
     XCTAssertNotNil(tagFeed)
     XCTAssertTrue(tagFeed.dynamicType === TagFeedRequest.self)
     XCTAssertEqual(tagFeed.name, "swift")
     XCTAssertNotNil(tagFeed.category)
+  }
+
+  func testUserFeed() {
+    let userFeed = HatebuFeed.UserFeed("hirakiuc")
+
+    XCTAssertNotNil(userFeed)
+    XCTAssertTrue(userFeed.dynamicType === UserFeedRequest.self)
+    XCTAssertEqual(userFeed.name, "hirakiuc")
+    XCTAssertNotNil(userFeed.category)
   }
 }

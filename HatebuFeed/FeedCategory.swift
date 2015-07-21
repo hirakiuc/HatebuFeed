@@ -14,6 +14,7 @@ public enum FeedCategoryType: String {
   case HOT = "hot"
   case NEW = "new"
   case TAG = "tag"
+  case USER = "user"
 }
 
 public enum FeedCategoryName: String {

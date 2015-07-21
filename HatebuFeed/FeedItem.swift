@@ -60,7 +60,11 @@ public final class FeedItem: Object, ResponseObjectSerializable {
       element.firstChildWithTag("date", inNamespace: "dc").stringValue()
     )
 
-    self.dcSubject = element.firstChildWithTag("subject", inNamespace: "dc").stringValue()
+    if let tag = element.firstChildWithTag("subject", inNamespace: "dc") {
+      self.dcSubject = tag.stringValue()
+    } else {
+      self.dcSubject = ""
+    }
   }
 
   override public class func primaryKey() -> String? {
