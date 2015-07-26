@@ -15,7 +15,7 @@ public class HotFeedRequest: BaseFeedRequest {
   let feedPath : String = "hotentry"
 
   init(name: FeedCategoryName) {
-    self.category = FeedCategory.findOrCreate(FeedCategoryType.HOT, name: name.rawValue)
+    self.category = FeedCategory.findOrCreate(FeedCategoryType.HOT.rawValue, name: name.rawValue)
   }
 
   public func url() -> (url: String, params: Dictionary<String, String>) {

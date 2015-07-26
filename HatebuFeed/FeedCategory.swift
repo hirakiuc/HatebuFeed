@@ -39,7 +39,7 @@ public class FeedCategory : Object {
   dynamic var uid : String = ""
   dynamic var type : String = ""
   dynamic var name : String = ""
-  var feedItems = List<FeedItem>()
+  dynamic var feedItems = List<FeedItem>()
 
   // constructor for HotCategory, NewCategory
   convenience init(type: FeedCategoryType, name: FeedCategoryName) {
@@ -59,8 +59,7 @@ public class FeedCategory : Object {
     self.uid = uniqueId(self.type, name: self.name)
   }
 
-  public class func findOrCreate(type: FeedCategoryType, name: String) -> FeedCategory {
-    let realm = HatebuFeed.realm()!
+  public class func findOrCreate(type: String, name: String, realm: Realm = HatebuFeed.realm()!) -> FeedCategory {
 
     if let category = findBy(realm, type: type, name: name) {
       return category
@@ -68,8 +67,8 @@ public class FeedCategory : Object {
 
     realm.write {
       realm.create(FeedCategory.self, value: [
-        "uid": uniqueId(type.rawValue, name: name),
-        "type": type.rawValue,
+        "uid": uniqueId(type, name: name),
+        "type": type,
         "name": name
       ], update: false)
     }
@@ -77,9 +76,8 @@ public class FeedCategory : Object {
     return findBy(realm, type: type, name: name)!
   }
 
-  class func findBy(realm: Realm, type: FeedCategoryType, name: String) -> FeedCategory? {
-    let result = realm.objects(FeedCategory).filter("uid = %@", uniqueId(type.rawValue, name: name))
-    return result.first
+  class func findBy(realm: Realm, type: String, name: String) -> FeedCategory? {
+    return realm.objectForPrimaryKey(FeedCategory.self, key: uniqueId(type, name: name))
   }
 
   override public class func primaryKey() -> String? {

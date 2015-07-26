@@ -74,10 +74,10 @@ extension BaseFeedRequest {
           item = feedItem
         }
 
-        // FIXME: This cause error from Realm...
-//        if item?.isBelongsTo(category) == false {
-//          category.feedItems.append(item!)
-//        }
+        if item!.isBelongsTo(category) == false {
+          let cat = FeedCategory.findOrCreate(category.type, name: category.name, realm: realm)
+          cat.feedItems.append(item!)
+        }
       }
     }
 

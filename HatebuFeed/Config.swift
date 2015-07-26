@@ -28,11 +28,6 @@ public class Config : NSObject {
 
   public func realm() -> Realm? {
     do {
-      let fileManager = NSFileManager.defaultManager()
-      if fileManager.fileExistsAtPath(self.realmPath) {
-        try! fileManager.removeItemAtPath(self.realmPath)
-      }
-
       return try Realm(path: self.realmPath)
     } catch {
       return nil

@@ -15,7 +15,7 @@ public class NewFeedRequest: BaseFeedRequest {
   let feedPath : String = "entrylist"
 
   init(name: FeedCategoryName) {
-    self.category = FeedCategory.findOrCreate(FeedCategoryType.NEW, name: name.rawValue)
+    self.category = FeedCategory.findOrCreate(FeedCategoryType.NEW.rawValue, name: name.rawValue)
   }
 
   public func url() -> (url: String, params: Dictionary<String, String>) {

@@ -15,7 +15,7 @@ public class TagFeedRequest: BaseFeedRequest {
   let feedPath : String = "search/tag"
 
   init(tag: String) {
-    self.category = FeedCategory.findOrCreate(FeedCategoryType.TAG, name: tag)
+    self.category = FeedCategory.findOrCreate(FeedCategoryType.TAG.rawValue, name: tag)
   }
 
   public func url() -> (url: String, params:  Dictionary<String, String>) {

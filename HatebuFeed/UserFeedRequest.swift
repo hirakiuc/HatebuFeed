@@ -14,7 +14,7 @@ public class UserFeedRequest: BaseFeedRequest {
   let category : FeedCategory
 
   init(userId: String) {
-    self.category = FeedCategory.findOrCreate(FeedCategoryType.USER, name: userId)
+    self.category = FeedCategory.findOrCreate(FeedCategoryType.USER.rawValue, name: userId)
   }
 
   public func url() -> (url: String, params: Dictionary<String, String>) {
