@@ -44,6 +44,7 @@ class UserFeedRequestAsyncTests: XCTestCase {
       let count = realm.objects(FeedItem).count
 
       XCTAssertEqual(category.feedItems.count, count)
+      XCTAssertEqual(request.feedItems().count, count)
 
       self.clearRealm()
     }
