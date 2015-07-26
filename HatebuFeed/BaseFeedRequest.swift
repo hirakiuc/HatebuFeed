@@ -28,11 +28,11 @@ extension BaseFeedRequest {
     }
   }
 
-  func load(completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request {
-    return load([String: String](), completionHandler: completionHandler)
+  func fetch(completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request {
+    return fetch([String: String](), completionHandler: completionHandler)
   }
 
-  func load(parameters: Dictionary<String, String>, completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request {
+  func fetch(parameters: Dictionary<String, String>, completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request {
 
     let req = self.url()
 
