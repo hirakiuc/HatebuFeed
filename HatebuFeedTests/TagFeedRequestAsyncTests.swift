@@ -25,11 +25,11 @@ class TagFeedRequestAsyncTests: XCTestCase {
     super.tearDown()
   }
 
-  func testLoad() {
+  func testFetch() {
     let expectation = self.expectationWithDescription("fetch feed")
     let request = TagFeedRequest(tag: "swift")
 
-    request.load { feedItems, error in
+    request.fetch { feedItems, error in
 
       for item in feedItems {
         print(item.title)

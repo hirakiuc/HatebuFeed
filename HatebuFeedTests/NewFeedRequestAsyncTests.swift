@@ -23,12 +23,12 @@ class NewFeedRequestAsyncTests: XCTestCase {
     super.tearDown()
   }
 
-  func testLoad() {
+  func testFetch() {
     let expectation = self.expectationWithDescription("fetch new feed")
 
     let newFeed = NewFeedRequest(name: FeedCategoryName.IT)
 
-    newFeed.load { (feedItems, error) -> Void in
+    newFeed.fetch { (feedItems, error) -> Void in
       for item in feedItems {
         print(item.title)
         print(item.dcDate)

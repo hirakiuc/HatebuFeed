@@ -23,18 +23,18 @@ class HotFeedRequestAsyncTests: XCTestCase {
     super.tearDown()
   }
 
-  func testLoad() {
+  func testFetch() {
     let expectation = self.expectationWithDescription("fetch feed")
     let hotFeed : HotFeedRequest = HotFeedRequest(name: FeedCategoryName.IT)
 
-    hotFeed.load({ feedItems, error in
+    hotFeed.fetch { feedItems, error in
       for item in feedItems {
         print(item.title)
         print(item.dcDate)
       }
 
       expectation.fulfill()
-    })
+    }
 
     self.waitForExpectationsWithTimeout(5.0) { (error) -> Void in
       let realm = self.realm()
