@@ -13,7 +13,11 @@ import RealmSwift
 
 protocol BaseFeedRequest {
   var category : FeedCategory { get }
+  func feedItems(realm: Realm) -> Results<FeedItem>
   func url() -> (url: String, params: Dictionary<String, String>)
+
+  func fetch(completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request
+  func fetch(parameters: Dictionary<String, String>, completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request
 }
 
 extension BaseFeedRequest {
@@ -49,18 +53,14 @@ extension BaseFeedRequest {
       })
   }
 
-  internal func loadFeedItems(type: FeedCategoryType, name: String) -> Results<FeedItem> {
-    let realm = HatebuFeed.realm()!
-
+  func feedItems(realm: Realm = HatebuFeed.realm()!) -> Results<FeedItem> {
     let sortDescriptors = [
       SortDescriptor(property: "createdAt", ascending: false),
       SortDescriptor(property: "no", ascending: true)
     ]
 
-    return realm.objects(FeedItem)
-      .filter("ANY (categories.type = %@ and categories.name = %@",
-        type.rawValue, name
-    ).sorted(sortDescriptors)
+    let category = FeedCategory.findOrCreate(self.category.type, name: self.category.name, realm: realm)
+    return category.feedItems.sorted(sortDescriptors)
   }
 
   internal func importFeedItems(category: FeedCategory, feedItems: Array<FeedItem>) -> Bool {

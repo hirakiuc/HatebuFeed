@@ -24,8 +24,4 @@ public class TagFeedRequest: BaseFeedRequest {
       ["q": self.category.name, "mode": "rss"]
     )
   }
-
-  public func feedItems(tag: String) -> Results<FeedItem> {
-    return loadFeedItems(FeedCategoryType.TAG, name: self.category.name)
-  }
 }

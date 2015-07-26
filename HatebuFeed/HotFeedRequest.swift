@@ -31,8 +31,4 @@ public class HotFeedRequest: BaseFeedRequest {
       )
     }
   }
-
-  public func feedItems(name: FeedCategoryName) -> Results<FeedItem> {
-    return loadFeedItems(FeedCategoryType.HOT, name: self.category.name)
-  }
 }

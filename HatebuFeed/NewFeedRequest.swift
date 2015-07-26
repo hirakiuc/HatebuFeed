@@ -31,8 +31,4 @@ public class NewFeedRequest: BaseFeedRequest {
       )
     }
   }
-
-  public  func feedItems(name: FeedCategoryName) -> Results<FeedItem> {
-    return loadFeedItems(FeedCategoryType.NEW, name: self.category.name)
-  }
 }
