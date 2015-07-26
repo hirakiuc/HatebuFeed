@@ -59,6 +59,15 @@ public class FeedCategory : Object {
     self.uid = uniqueId(self.type, name: self.name)
   }
 
+  // constructor for userId
+  convenience init(userId: String) {
+    self.init()
+
+    self.type = FeedCategoryType.USER.rawValue
+    self.name = userId
+    self.uid = uniqueId(self.type, name: self.name)
+  }
+
   public class func findOrCreate(type: String, name: String, realm: Realm = HatebuFeed.realm()!) -> FeedCategory {
 
     if let category = findBy(realm, type: type, name: name) {

@@ -8,7 +8,7 @@
 
 import XCTest
 import RealmSwift
-import HatebuFeed
+@testable import HatebuFeed
 
 extension XCTestCase {
   final func realm() -> Realm {
@@ -18,5 +18,22 @@ extension XCTestCase {
   final func clearRealm() {
     let realm = self.realm()
     realm.write { realm.deleteAll() }
+  }
+
+  public func sampleFeedItem(url: String) -> FeedItem {
+    let now = NSDate.new()
+
+    let item = FeedItem()
+    item.title = "test-title"
+    item.desc = "description"
+    item.url = url
+    item.hatebuCount = Int32(10)
+    item.no = Int32(0)
+    item.dcDate = now
+    item.dcSubject = "subjectA"
+    item.createdAt = now
+    item.updatedAt = now
+
+    return item
   }
 }

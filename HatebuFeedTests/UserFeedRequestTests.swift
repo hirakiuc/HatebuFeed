@@ -22,28 +22,53 @@ class UserFeedRequestTests: XCTestCase {
     super.tearDown()
   }
 
-  func userFeedRequest(userId: String = "hirakiuc") -> UserFeedRequest {
+  func userFeed(userId: String = "hirakiuc") -> UserFeedRequest {
     return UserFeedRequest(userId: userId)
   }
 
   func testInit() {
-    let request = self.userFeedRequest()
+    let userFeed = self.userFeed()
 
-    XCTAssertNotNil(request)
-    XCTAssertTrue(request.dynamicType === UserFeedRequest.self)
-    XCTAssertNotNil(request.category)
+    XCTAssertNotNil(userFeed)
+    XCTAssertTrue(userFeed.dynamicType === UserFeedRequest.self)
+    XCTAssertNotNil(userFeed.category)
   }
 
-//  func testName() {
-//    let request = self.userFeedRequest()
-//
-//    XCTAssertEqual(request.name, "hirakiuc")
-//  }
+  func testName() {
+    let userFeed = self.userFeed()
 
-//  func testUrl() {
-//    let ret = self.userFeedRequest().url()
-//
-//    XCTAssertEqual(ret.url, "http://b.hatena.ne.jp/hirakiuc/rss")
-//    XCTAssertNotNil(ret.params["t"])
-//  }
+    XCTAssertEqual(userFeed.name, "hirakiuc")
+  }
+
+  func testUrl() {
+    let ret = self.userFeed().url()
+
+    XCTAssertEqual(ret.url, "http://b.hatena.ne.jp/hirakiuc/rss")
+    XCTAssertNotNil(ret.params["t"])
+  }
+
+  func testFeedItem_WithoutRecord() {
+    let item = userFeed().feedItem("http://example.com")
+    XCTAssertNil(item)
+  }
+
+  func testFeedItem_WithRecord() {
+    let realm = self.realm()
+
+    realm.write {
+      let category = FeedCategory(userId: "hirakiuc")
+      realm.add(category)
+
+      let item = self.sampleFeedItem("http://b.hatena.ne.jp/test")
+      category.feedItems.append(item)
+
+      realm.add(item)
+    }
+
+    let found = userFeed().feedItem("http://b.hatena.ne.jp/test")
+    XCTAssertNotNil(found)
+
+    let notFound = userFeed().feedItem("http://example.com")
+    XCTAssertNil(notFound)
+  }
 }

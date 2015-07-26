@@ -14,6 +14,7 @@ import RealmSwift
 protocol BaseFeedRequest {
   var category : FeedCategory { get }
   func feedItems(realm: Realm) -> Results<FeedItem>
+  func feedItem(url: String, realm: Realm) -> FeedItem?
   func url() -> (url: String, params: Dictionary<String, String>)
 
   func fetch(completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request
@@ -51,6 +52,11 @@ extension BaseFeedRequest {
           completionHandler(feedItems, nil)
         }
       })
+  }
+
+  func feedItem(url: String, realm: Realm = HatebuFeed.realm()!) -> FeedItem? {
+    let category = FeedCategory.findOrCreate(self.category.type, name: self.category.name, realm: realm)
+    return category.feedItems.filter("url = %@", url).first
   }
 
   func feedItems(realm: Realm = HatebuFeed.realm()!) -> Results<FeedItem> {

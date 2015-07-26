@@ -56,4 +56,29 @@ class NewFeedRequestTests: XCTestCase {
     XCTAssertEqual(ret.url, "http://b.hatena.ne.jp/entrylist")
     XCTAssertEqual(ret.params, ["mode": "rss"])
   }
+
+  func testFeedItem_WithoutRecord() {
+    let item = newFeed().feedItem("http://example.com")
+    XCTAssertNil(item)
+  }
+
+  func testFeedItem_WithRecord() {
+    let realm = self.realm()
+
+    realm.write {
+      let category = FeedCategory(type: FeedCategoryType.NEW, name: FeedCategoryName.IT)
+      realm.add(category)
+
+      let item = self.sampleFeedItem("http://b.hatena.ne.jp/test")
+      category.feedItems.append(item)
+
+      realm.add(item)
+    }
+
+    let found = NewFeed(FeedCategoryName.IT).feedItem("http://b.hatena.ne.jp/test")
+    XCTAssertNotNil(found)
+
+    let notFound = NewFeed(FeedCategoryName.IT).feedItem("http://example.com")
+    XCTAssertNil(notFound)
+  }
 }

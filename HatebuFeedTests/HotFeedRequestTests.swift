@@ -52,4 +52,29 @@ class HotFeedRequestTests: XCTestCase {
     XCTAssertEqual(ret.url, "http://b.hatena.ne.jp/hotentry")
     XCTAssertEqual(ret.params, ["mode": "rss"])
   }
+
+  func testFeedItem_WithoutRecord() {
+    let item = hotFeed().feedItem("http://example.com")
+    XCTAssertNil(item)
+  }
+
+  func testFeedItem_WithRecord() {
+    let realm = self.realm()
+
+    realm.write {
+      let category = FeedCategory(type: FeedCategoryType.HOT, name: FeedCategoryName.SOCIAL)
+      realm.add(category)
+
+      let item = self.sampleFeedItem("http://b.hatena.ne.jp/test")
+      category.feedItems.append(item)
+
+      realm.add(item)
+    }
+
+    let found = HotFeed(FeedCategoryName.SOCIAL).feedItem("http://b.hatena.ne.jp/test")
+    XCTAssertNotNil(found)
+
+    let notFound = HotFeed(FeedCategoryName.SOCIAL).feedItem("http://example.com")
+    XCTAssertNil(notFound)
+  }
 }
