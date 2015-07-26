@@ -7,11 +7,10 @@
 //
 
 import XCTest
+import RealmSwift
 @testable import HatebuFeed
 
 class NewFeedRequestTests: XCTestCase {
-  let newFeed : NewFeedRequest = NewFeedRequest(name: FeedCategoryName.SOCIAL)
-
   override func setUp() {
     super.setUp()
     // do something
@@ -19,46 +18,42 @@ class NewFeedRequestTests: XCTestCase {
 
   override func tearDown() {
     // do something
+    self.clearRealm()
+
     super.tearDown()
   }
 
+  func newFeed(name: FeedCategoryName = FeedCategoryName.SOCIAL) -> NewFeedRequest {
+    return NewFeedRequest(name: name)
+  }
+
   func testInit() {
-    XCTAssertNotNil(newFeed)
-    XCTAssertTrue(newFeed.dynamicType === NewFeedRequest.self)
-    XCTAssertNotNil(newFeed.category)
+    let request = self.newFeed()
+
+    XCTAssertNotNil(request)
+    XCTAssertTrue(request.dynamicType === NewFeedRequest.self)
+    XCTAssertNotNil(request.category)
   }
 
   func testName() {
-    XCTAssertEqual(newFeed.name, FeedCategoryName.SOCIAL.rawValue)
+    let request = self.newFeed()
+
+    XCTAssertEqual(request.name, FeedCategoryName.SOCIAL.rawValue)
   }
 
   func testNonTotalUrl() {
-    let ret = newFeed.url()
+    let request = self.newFeed()
+    let ret = request.url()
 
     XCTAssertEqual(ret.url, "http://b.hatena.ne.jp/entrylist/social")
     XCTAssertEqual(ret.params, ["mode": "rss"])
   }
 
   func testTotalURL() {
-    let feed = NewFeedRequest(name: FeedCategoryName.TOTAL)
-    let ret = feed.url()
+    let request = NewFeedRequest(name: FeedCategoryName.TOTAL)
+    let ret = request.url()
 
     XCTAssertEqual(ret.url, "http://b.hatena.ne.jp/entrylist")
     XCTAssertEqual(ret.params, ["mode": "rss"])
-  }
-
-  func testLoad() {
-    let expectation = self.expectationWithDescription("fetch feed")
-
-    newFeed.load({ feedItems, error in
-      for item in feedItems {
-        print(item.title)
-        print(item.dcDate)
-      }
-
-      expectation.fulfill()
-    })
-
-    self.waitForExpectationsWithTimeout(5.0, handler: nil)
   }
 }

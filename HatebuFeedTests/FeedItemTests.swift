@@ -11,37 +11,42 @@ import RealmSwift
 @testable import HatebuFeed
 
 class FeedItemTests: XCTestCase {
-  var realm : Realm = Realm(inMemoryIdentifier: "FeedItemTestsRealm")
 
   override func setUp() {
     super.setUp()
+
     // do something
-    realm.write { self.realm.deleteAll() }
+    self.clearRealm()
   }
 
   override func tearDown() {
     // do something
-    realm.write { self.realm.deleteAll() }
+    self.clearRealm()
+
     super.tearDown()
   }
 
+  func feedItem(idx: Int = 0, now: NSDate = NSDate.new()) -> FeedItem {
+    let item = FeedItem()
+    item.title = String(format: "title-%d", idx)
+    item.desc = "desc"
+    item.url = String(format: "http://b.hatena.ne.jp/%d", idx)
+    item.hatebuCount = Int32(idx)
+    item.no = Int32(idx)
+    item.dcDate = now
+    item.dcSubject = "some,subject"
+    item.createdAt = now
+    item.updatedAt = now
+
+    return item
+  }
+
   func testSaveWithoutCategory() {
+    let realm = self.realm()
+
     realm.write {
       for idx in 0..<10 {
-        let now = NSDate.new()
-
-        let item = FeedItem()
-        item.title = String(format: "title-%d", idx)
-        item.desc = "desc"
-        item.url = String(format: "http://b.hatena.ne.jp/%d", idx)
-        item.hatebuCount = Int32(idx)
-        item.no = Int32(idx)
-        item.dcDate = now
-        item.dcSubject = "some,subject"
-        item.createdAt = now
-        item.updatedAt = now
-        
-        self.realm.add(item)
+        realm.add(self.feedItem(idx))
       }
     }
 
@@ -49,12 +54,14 @@ class FeedItemTests: XCTestCase {
   }
 
   func testSaveWithCategory() {
+    let realm = self.realm()
+
     realm.write {
       let category = FeedCategory()
       category.type = FeedCategoryType.HOT.rawValue
       category.name = FeedCategoryName.IT.rawValue
 
-      self.realm.add(category)
+      realm.add(category)
 
       let now = NSDate.new()
       let item = FeedItem()
@@ -69,12 +76,29 @@ class FeedItemTests: XCTestCase {
       item.updatedAt = now
       category.feedItems.append(item)
 
-      self.realm.add(item)
+      realm.add(item)
     }
 
     let feedItems = realm.objects(FeedItem).filter("url = %@", "http://b.hatena.ne.jp/test")
     XCTAssertEqual(feedItems.count, 1)
     let item = feedItems[0]
     XCTAssertEqual(item.url, "http://b.hatena.ne.jp/test")
+  }
+
+  func testIsBelongsTo() {
+    let realm = self.realm()
+
+    realm.write {
+      let category = FeedCategory(type: FeedCategoryType.HOT, name: FeedCategoryName.IT)
+      realm.add(category)
+
+      let item = self.feedItem()
+      category.feedItems.append(item)
+      realm.add(item)
+    }
+
+    let category = realm.objects(FeedCategory).filter("type = %@ and name = %@", FeedCategoryType.HOT.rawValue, FeedCategoryName.IT.rawValue).first!
+    let item = realm.objects(FeedItem).filter("url = %@", "http://b.hatena.ne.jp/0").first!
+    XCTAssertTrue(item.isBelongsTo(category))
   }
 }

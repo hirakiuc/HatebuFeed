@@ -10,8 +10,6 @@ import XCTest
 @testable import HatebuFeed
 
 class UserFeedRequestTests: XCTestCase {
-  let userFeed : UserFeedRequest = UserFeedRequest(userId: "hirakiuc")
-
   override func setUp() {
     super.setUp()
     // do something
@@ -19,38 +17,33 @@ class UserFeedRequestTests: XCTestCase {
 
   override func tearDown() {
     // do something
+    self.clearRealm()
+
     super.tearDown()
   }
 
+  func userFeedRequest(userId: String = "hirakiuc") -> UserFeedRequest {
+    return UserFeedRequest(userId: userId)
+  }
+
   func testInit() {
-    XCTAssertNotNil(userFeed)
-    XCTAssertTrue(userFeed.dynamicType === UserFeedRequest.self)
-    XCTAssertNotNil(userFeed.category)
+    let request = self.userFeedRequest()
+
+    XCTAssertNotNil(request)
+    XCTAssertTrue(request.dynamicType === UserFeedRequest.self)
+    XCTAssertNotNil(request.category)
   }
 
-  func testName() {
-    XCTAssertEqual(userFeed.name, "hirakiuc")
-  }
+//  func testName() {
+//    let request = self.userFeedRequest()
+//
+//    XCTAssertEqual(request.name, "hirakiuc")
+//  }
 
-  func testUrl() {
-    let ret = userFeed.url()
-
-    XCTAssertEqual(ret.url, "http://b.hatena.ne.jp/hirakiuc/rss")
-    XCTAssertNotNil(ret.params["t"])
-  }
-
-  func testLoad() {
-    let expectation = self.expectationWithDescription("fetch userFeed")
-
-    userFeed.load { feedItems, error in
-      for item in feedItems {
-        print(item.title)
-        print(item.dcDate)
-      }
-
-      expectation.fulfill()
-    }
-
-    self.waitForExpectationsWithTimeout(5.0, handler: nil)
-  }
+//  func testUrl() {
+//    let ret = self.userFeedRequest().url()
+//
+//    XCTAssertEqual(ret.url, "http://b.hatena.ne.jp/hirakiuc/rss")
+//    XCTAssertNotNil(ret.params["t"])
+//  }
 }
