@@ -41,15 +41,17 @@ extension BaseFeedRequest {
 
     let req = self.url()
 
-    return Alamofire.request( .GET, URLString: req.url, parameters: parameters.merge(req.params))
-      .responseFeedItem( { request, response, feedItems, error in
-        if let error = error {
-          completionHandler([], error)
-        } else {
-
+    return Alamofire.request( .GET, req.url, parameters: parameters.merge(req.params))
+      .responseFeedItem( { request, response, result in
+        switch result {
+        case .Failure( _, let error):
+          completionHandler(Array<FeedItem>(), error)
+          break;
+        case .Success(let feedItems):
           self.importFeedItems(self.category, feedItems: feedItems)
 
           completionHandler(feedItems, nil)
+          break;
         }
       })
   }

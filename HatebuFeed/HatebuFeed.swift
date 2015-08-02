@@ -24,32 +24,52 @@ extension Dictionary {
   }
 }
 
+private struct Error {
+  static let Domain = "jp.altab.iapps.lib.HatebuFeed.error"
+
+  enum Code: Int {
+    case DataSerializationFailed = -10000
+  }
+  static func errorWithCode(code: Code, failureReason: String) -> NSError {
+    let userInfo = [NSLocalizedFailureReasonErrorKey: failureReason]
+    return NSError(domain: Domain, code: code.rawValue, userInfo: userInfo)
+  }
+}
+
+// XMLResponse Serialization extension.
 extension Request {
-  class func XMLDocumentSerializer() -> Serializer {
-    return { request, response, data in
-      if data == nil {
-        return (nil, nil)
+  public static func XMLResponseSerializer() -> GenericResponseSerializer<ONOXMLDocument> {
+    return GenericResponseSerializer { request, response, data in
+      guard let _ = data else {
+        let failureReason = "Data could not be serialized. Input data was nil."
+        let error = Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
+        return Alamofire.Result.Failure(data, error)
       }
 
       do {
         let XML: ONOXMLDocument? = try ONOXMLDocument(data: data)
-        return (XML, nil)
+        return Alamofire.Result.Success(XML!)
       } catch {
-        return (nil, nil)
+        let failureReason = "Data could not be parsed."
+        let err = Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
+        return Alamofire.Result.Failure(nil, err)
       }
     }
   }
 
-  func responseXMLDocument(completionHandler: (NSURLRequest, NSHTTPURLResponse?, ONOXMLDocument?, NSError?) -> Void) -> Self {
-    return response(serializer: Request.XMLDocumentSerializer()) { request, response, XML, error in
-      completionHandler(request!, response, XML as? ONOXMLDocument, error)
-    }
+  public func responseXMLDocument(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Alamofire.Result<ONOXMLDocument>) -> Void) -> Self {
+    return response(responseSerializer: Request.XMLResponseSerializer(), completionHandler: completionHandler)
   }
+}
 
-  class func FeedItemSerializer() -> Serializer {
-    return { request, response, data in
-      if data == nil {
-        return ([], nil)
+// FeedItem Serialization extension.
+extension Request {
+  class func FeedItemSerializer() -> GenericResponseSerializer<Array<FeedItem>> {
+    return GenericResponseSerializer<Array<FeedItem>> { request, response, data in
+      guard let _ = data else {
+        let failureReason = "Data could not be serialized. Input data was nil."
+        let error = Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
+        return Alamofire.Result.Failure(data, error)
       }
 
       do {
@@ -63,17 +83,19 @@ extension Request {
             return FeedItem(element: element)
           })
 
-        return (items, nil)
+        return Alamofire.Result.Success(items)
       } catch {
-        return ([], nil)
+        let failureReason = "Data could not parsed."
+        let err = Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
+        return Alamofire.Result.Failure(nil, err)
       }
     }
   }
 
-  func responseFeedItem(completionHandler: (NSURLRequest, NSHTTPURLResponse?, Array<FeedItem>, NSError?) -> Void) -> Self {
-    return response(serializer: Request.FeedItemSerializer()) { request, response, feedItems, error in
-      completionHandler(request!, response, feedItems as! Array<FeedItem>, error)
-    }
+  func responseFeedItem(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Alamofire.Result<Array<FeedItem>>) -> Void) -> Self {
+    return response(responseSerializer: Request.FeedItemSerializer(), completionHandler: { request, response, result in
+      completionHandler(request, response, result)
+    })
   }
 }
 
