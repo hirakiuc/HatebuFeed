@@ -17,8 +17,8 @@ protocol BaseFeedRequest {
   func feedItem(url: String, realm: Realm) -> FeedItem?
   func url() -> (url: String, params: Dictionary<String, String>)
 
-  func fetch(completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request
-  func fetch(parameters: Dictionary<String, String>, completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request
+  func fetch(completionHandler: (Alamofire.Result<Array<FeedItem>>) -> Void) -> Alamofire.Request
+  func fetch(parameters: Dictionary<String, String>, completionHandler: (Alamofire.Result<Array<FeedItem>>) -> Void) -> Alamofire.Request
 }
 
 extension BaseFeedRequest {
@@ -33,26 +33,17 @@ extension BaseFeedRequest {
     }
   }
 
-  func fetch(completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request {
+  func fetch(completionHandler: (Alamofire.Result<Array<FeedItem>>) -> Void) -> Alamofire.Request {
     return fetch([String: String](), completionHandler: completionHandler)
   }
 
-  func fetch(parameters: Dictionary<String, String>, completionHandler: (Array<FeedItem>, NSError?) -> Void) -> Alamofire.Request {
+  func fetch(parameters: Dictionary<String, String>, completionHandler: (Alamofire.Result<Array<FeedItem>>) -> Void) -> Alamofire.Request {
 
     let req = self.url()
 
     return Alamofire.request( .GET, req.url, parameters: parameters.merge(req.params))
       .responseFeedItem( { request, response, result in
-        switch result {
-        case .Failure( _, let error):
-          completionHandler(Array<FeedItem>(), error)
-          break;
-        case .Success(let feedItems):
-          self.importFeedItems(self.category, feedItems: feedItems)
-
-          completionHandler(feedItems, nil)
-          break;
-        }
+        completionHandler(result)
       })
   }
 

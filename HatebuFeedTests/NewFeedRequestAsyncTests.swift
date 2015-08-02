@@ -28,13 +28,20 @@ class NewFeedRequestAsyncTests: XCTestCase {
 
     let newFeed = NewFeedRequest(name: FeedCategoryName.IT)
 
-    newFeed.fetch { (feedItems, error) -> Void in
-      for item in feedItems {
-        print(item.title)
-        print(item.dcDate)
-      }
+    newFeed.fetch { (result) -> Void in
+      switch result {
+      case .Failure(_, let error):
+        let msg = String(format: "fail to fetch newfeed.(%@)", error)
+        XCTFail(msg)
+        break
+      case .Success(let feedItems):
+        for item in feedItems {
+          print(item.title)
+          print(item.dcDate)
+        }
 
-      expectation.fulfill()
+        expectation.fulfill()
+      }
     }
 
     self.waitForExpectationsWithTimeout(5.0) { (error) -> Void in

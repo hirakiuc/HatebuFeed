@@ -29,14 +29,21 @@ class TagFeedRequestAsyncTests: XCTestCase {
     let expectation = self.expectationWithDescription("fetch feed")
     let request = TagFeedRequest(tag: "swift")
 
-    request.fetch { feedItems, error in
+    request.fetch { result in
+      switch result {
+      case .Failure(_, let error):
+        let msg = String(format: "fail to fetch tagfeed.(%@)", error)
+        XCTFail(msg)
+        break
+      case .Success(let feedItems):
+        for item in feedItems {
+          print(item.title)
+          print(item.dcDate)
+        }
 
-      for item in feedItems {
-        print(item.title)
-        print(item.dcDate)
+        expectation.fulfill()
+        break
       }
-
-      expectation.fulfill()
     }
 
     self.waitForExpectationsWithTimeout(5.0) { (error) -> Void in
