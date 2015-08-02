@@ -27,13 +27,21 @@ class HotFeedRequestAsyncTests: XCTestCase {
     let expectation = self.expectationWithDescription("fetch feed")
     let hotFeed : HotFeedRequest = HotFeedRequest(name: FeedCategoryName.IT)
 
-    hotFeed.fetch { feedItems, error in
-      for item in feedItems {
-        print(item.title)
-        print(item.dcDate)
-      }
+    hotFeed.fetch { result in
+      switch result {
+      case .Failure(_, let error):
+        let msg = String(format: "fail to fetch hotfeed.(%@)", error)
+        XCTFail(msg)
+        break
+      case .Success(let feedItems):
+        for item in feedItems {
+          print(item.title)
+          print(item.dcDate)
+        }
 
-      expectation.fulfill()
+        expectation.fulfill()
+        break
+      }
     }
 
     self.waitForExpectationsWithTimeout(5.0) { (error) -> Void in

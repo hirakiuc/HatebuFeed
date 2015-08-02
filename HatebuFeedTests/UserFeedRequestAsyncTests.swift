@@ -28,13 +28,21 @@ class UserFeedRequestAsyncTests: XCTestCase {
     let expectation = self.expectationWithDescription("fetch userFeed")
     let request = UserFeedRequest(userId: "hirakiuc")
 
-    request.fetch { feedItems, error in
-      for item in feedItems {
-        print(item.title)
-        print(item.dcDate)
-      }
+    request.fetch { result in
+      switch result {
+      case .Failure(_, let error):
+        let msg = String(format: "fail to fetch userfeed.(%W)", error)
+        XCTFail(msg)
+        break
+      case .Success(let feedItems):
+        for item in feedItems {
+          print(item.title)
+          print(item.dcDate)
+        }
 
-      expectation.fulfill()
+        expectation.fulfill()
+        break
+      }
     }
 
     self.waitForExpectationsWithTimeout(5.0) { (error) -> Void in
